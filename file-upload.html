@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+    <link rel="stylesheet" href="assets/css/Upload.css">
+</head>
+<body>
+    <div class="upload-container">
+        <input type="file" id="fileInput" multiple onchange="displayFiles(this)" class="custom-file-input">
+        <button class="plane-button" id="Plane" onclick="uploadFiles()">
+            <img src="assets/images/plane.png" alt="Plane Icon">
+        </button>
+        <div class="preview-container"></div>
+        <div class="select-container">
+            <select id="mySelect">
+                <option value="User-1">User-1</option>
+                <option value="User-2">User-2</option>
+            </select>
+        </div>
+    </div>
+    <!-- Include Firebase scripts from the CDN using non-module syntax -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
+    <script src="assets/script/upload.js"></script> <!-- Link to the external JavaScript file -->
+</body>
+
+</html>
