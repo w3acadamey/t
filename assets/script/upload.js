@@ -80,7 +80,7 @@ function displayFiles(input) {
 
         const deleteBtn = document.createElement('button');
         deleteBtn.style = "background-color: transparent; border: none;";
-        deleteBtn.innerHTML = '<img src="assets/images/trash.png" class="trash-icon" style="width: 24px; height: 24px;">';
+        deleteBtn.innerHTML = '<img src="assets/images/Trash.png" class="trash-icon" style="width: 24px; height: 24px;">';
         deleteBtn.addEventListener('click', function() {
             fileItem.remove(); // Remove the file item from the list
             const index = filesToUpload.indexOf(file);
