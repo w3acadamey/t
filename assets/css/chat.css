@@ -74,7 +74,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 1%;
+    margin: 1%;
 }
 
 .active-user-chat-container,
