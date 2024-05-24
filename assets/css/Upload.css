@@ -1,0 +1,130 @@
+/* Add your custom styles here */
+
+body {
+    background-color: #0a0a0a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Make the body take the full height of the viewport */
+    color: #b0b0b0;
+    margin: 0; /* Remove default margin */
+}
+
+.upload-container {
+    background-color: #2C2B2C;
+    border: 2px solid #595659;
+    width: 94vw; /* Set width to 80% of the viewport width */
+    height: 84vh; /* Set height to 80% of the viewport height */
+    display: flex;
+    flex-direction: column; /* Align items vertically */
+    align-items: center;
+    justify-content: flex-start; /* Align items to the top */
+    padding: 10px;
+    margin-bottom: 20px; /* Add margin between upload container and file send container */
+    overflow-y: auto; /* Add a vertical scrollbar if content overflows */
+    border-radius: 15px; /* Add curved edges */
+    position: relative; /* Position relative for absolute positioning */
+}
+
+.upload-container input[type="file"] {
+    margin-bottom: 10px; /* Add space between file input and button */
+}
+
+.plane-button {
+    background-color: transparent;
+    border: none;
+    position: absolute; /* Position absolute for precise placement */
+    bottom: 33%; /* 10px from the bottom */
+    right: 24%; /* 10px from the right */
+}
+
+.plane-button img {
+    height: 20px;
+    width: 20px;
+}
+
+.preview-container {
+    /* Existing styles */
+    border: 2px solid #595659;
+    height: auto; /* Change height to auto to fit contents */
+    min-height: 400px;
+    max-height: 400px; /* Set a maximum height */
+    width: 800px; /* Let the width adjust according to content */
+    border-radius: 20px;
+    overflow-x: auto; /* Add horizontal scrollbar if content overflows */
+    overflow-y: hidden; /* Hide vertical scrollbar */
+    white-space: nowrap; /* Prevent items from wrapping */
+    display: flex; /* Make children flex items */
+}
+
+/* Styles for customizing scrollbar */
+.preview-container::-webkit-scrollbar {
+    width: 5px; /* Set width of the scrollbar */
+    background-color: #2c2b2c; /* Set background color same as body */
+}
+
+.preview-container::-webkit-scrollbar-thumb {
+    background-color: #595659; /* Set color of the scrollbar thumb */
+    border-radius: 20px; /* Add rounded corners to the scrollbar thumb */
+}
+
+select {
+    background-color: #2C2B2C;
+    border: 1px solid #595659;
+    color: #b0b0b0;
+    padding: 8px;
+    border-radius: 5px;
+    outline: none; /* Removes the default outline */
+    margin-top: 8%; /* Add margin to separate from other elements */
+    /* Add any additional styles as needed */
+}
+
+/* Styling for the file input button */
+.custom-file-input {
+    display: inline-block;
+    padding: 10px 20px; /* Adjust padding as needed */
+    color: #b0b0b0; /* Text color */
+    background-color: #2C2B2C; /* Background color */
+    border: 1px solid #595659; /* Border */
+    cursor: pointer; /* Change cursor to pointer */
+    /* Add any additional styles as needed */
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.view-readable {
+    height: 60px;
+    min-width: auto; /* Adjust width to auto to allow span to expand */
+    max-width: 300px;
+    padding: 1%; /* Adjust spacing between divs */
+    color: #b0b0b0;
+    background-color: #2C2B2C;
+    border: 2px solid #595659;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px; /* Add space between the span and the delete button */
+}
+
+@media (max-width: 768px) {
+    .preview-container {
+        width: 88%;
+        height: initial;
+        min-height: 400px;
+    }
+    .plane-button {
+        bottom: 45%; /* 10px from the bottom */
+        right: 12%; /* 10px from the right */
+    }
+    .upload-container {
+        width: 88%;
+    }
+    .filePreview {
+        height: 200px;
+    }
+}

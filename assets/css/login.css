@@ -1,0 +1,113 @@
+        /* CSS for the login form and popup */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: hsl(0, 0%, 7.06%);
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: hsl(240, 1.64%, 11.96%);
+            color: #000;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            width: 90%;
+            height: auto;
+        }
+
+        h2 {
+            text-align: center;
+            color: white;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-container {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        input, button {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: hsl(0, 0%, 7.06%);
+            color: white;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        input::placeholder {
+            color: hsl(0, 0%, 45.88%);
+        }
+
+        #eyeIcon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: hsl(0, 0%, 45.49%);
+        }
+
+        button {
+            background-color: hsl(240, 2.94%, 13.33%);
+            color: hsl(44.79, 98.61%, 71.76%);
+            border: 1px solid hsl(240, 2.94%, 15%);
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: hsl(240, 2.94%, 10%);
+        }
+
+        /* Popup container */
+        .popup-container {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+            justify-content: center;
+            align-items: center;
+            z-index: 999; /* Ensure it's on top */
+        }
+
+        /* Popup content */
+        .popup-content {
+            background-color: #090909; /* #090909 background */
+            color: white;
+            padding: 40px; /* Increased padding for a larger size */
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        /* CSS for the close button image */
+        .close-button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            cursor: pointer;
+            height: 20px;
+            width:20px;
+            /* Adjust other styles as needed */
+        }
+
+
+        .close-button:hover {
+            color: #ccc;
+        }

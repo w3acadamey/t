@@ -1,0 +1,198 @@
+body {
+    background-color: #0a0a0a;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.file-view {
+    width: 94vw;
+    height: 88vh;
+    background-color: #2C2B2C;
+    border: 2px solid #595659;
+    border-radius: 10px;
+    position: relative; /* Ensure file-view is the reference point */
+}
+
+.file-display {
+    margin-left: 2%;
+    width: 96%;
+    min-height: 78%;
+    max-height: 78%; /* Limiting the maximum height */
+    background-color: #2C2B2C;
+    border: 2px solid #595659;
+    border-radius: 10px;
+    margin-top: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto; /* Enable vertical scrollbar when content overflows */
+    position: relative;
+    z-index: 1; /* Lower z-index */
+}
+/* Adjust scrollbar width for smiley-container */
+.file-display::-webkit-scrollbar {
+    width: 6px;
+}
+
+.file-display::-webkit-scrollbar-thumb {
+    background-color: #595659;
+    border-radius: 3px;
+}
+.image {
+    margin-top: 2%;
+    margin-left: 2%;
+    height: 200px;
+    width: auto;
+}
+.disp-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 500px;
+    height: auto;
+    width: auto;
+    max-width: 550px;
+}
+
+.user-1-button,
+.user-2-button {
+    color: #b0b0b0;
+    background-color: #2C2B2C;
+    border: 2px solid #595659;
+    border-radius: 10px;
+    height: 6%;
+    width: 12%;
+    margin-top: 1%;
+}
+
+.user-1-button {
+    margin-left: 3%;
+}
+
+.user-2-button {
+    margin-left: 70%;
+}
+
+.display {
+    width: 56%;
+    min-height: 98%;
+    max-height: 88%; /* Limiting the maximum height */
+    background-color: #2C2B2C;
+    border: 2px solid #595659;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; /* Higher z-index */
+}
+
+.date {
+    display: block; /* Make the date element block-level */
+    color: #b0b0b0;
+    background-color: #2C2B2C;
+    border: 2px solid #595659;
+    height: 30px;
+    width: 100px;
+    margin-left: 2%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border-radius: 10px;
+    clear: both; /* Ensure date starts on a new line */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.transperent-container {
+    width: 96%;
+    height: 20%;
+    background-color: #2C2B2C;
+}
+.close {
+    height: 30px;
+    width: 30px;
+    margin: 10px; /* Add margin for spacing */
+    position: absolute;
+    top: 2px;
+    right: 2px;
+}
+.readable {
+    height: 60px;
+    min-width: auto;
+    max-width: 200px;
+    margin: 1%; /* Adjust spacing between divs */
+    color: #b0b0b0;
+    background-color: #2C2B2C;
+    border: 2px solid #595659;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.view-readable{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 500px;
+    height: auto;
+    min-width: auto;
+    max-width: 550px;
+
+}
+@media (max-width: 768px) {
+    .file-display {
+        min-height: 88%;
+        max-height: 88%;
+        align-content: flex-start;
+    }
+
+    .image {
+        height: 60px;
+        margin: 1.9%;
+    }
+
+    .file-display {
+        width: 96%;
+        min-height: 88%;
+        max-height: 88%;
+    }
+
+    .user-1-button {
+        margin-top: 3%;
+        height: 5%;
+        width: 20%;
+    }
+
+    .user-2-button {
+        height: 5%;
+        width: 20%;
+        margin-left: 55%;
+        margin-top: 3%;
+    }
+
+    .display {
+        top: 53%;
+        width: 96%;
+        min-height: 58%;
+        max-height: 88%;
+    }
+
+    .date {
+        height: 24px;
+    }
+    .disp-image {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: auto;
+        width: 230px;
+    }    
+}
