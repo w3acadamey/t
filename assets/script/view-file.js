@@ -134,7 +134,15 @@ async function displayItems() {
     try {
         const result = await listAll(storageRef);
         fileDisplay.innerHTML = '';
-        const folderPromises = result.prefixes.map(async (folderRef) => {
+
+        // Extract folder names and sort by date
+        const sortedFolders = result.prefixes.sort((a, b) => {
+            const dateA = new Date(a.name.split('-').reverse().join('-'));
+            const dateB = new Date(b.name.split('-').reverse().join('-'));
+            return dateB - dateA;
+        });
+
+        const folderPromises = sortedFolders.map(async (folderRef) => {
             const container = document.createElement('div');
             container.className = 'transperent-container';
             const label = document.createElement('label');
