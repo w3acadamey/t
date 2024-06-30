@@ -130,26 +130,38 @@ async function displayFiles(folderRef, containerElement) {
     }
 }
 
+function isDateString(str) {
+    return /^\d{4}-\d{2}-\d{2}$/.test(str);
+}
+
 async function displayItems() {
     try {
         const result = await listAll(storageRef);
         fileDisplay.innerHTML = '';
+        const folders = result.prefixes;
 
-        // Extract folder names and sort by date
-        const sortedFolders = result.prefixes.sort((a, b) => {
-            const dateA = new Date(a.name.split('-').reverse().join('-'));
-            const dateB = new Date(b.name.split('-').reverse().join('-'));
-            return dateB - dateA;
+        // Sort folders: non-date folders first, then date folders
+        folders.sort((a, b) => {
+            const isADate = isDateString(a.name);
+            const isBDate = isDateString(b.name);
+
+            if (isADate && !isBDate) {
+                return 1;
+            } else if (!isADate && isBDate) {
+                return -1;
+            } else {
+                return a.name.localeCompare(b.name);
+            }
         });
 
-        const folderPromises = sortedFolders.map(async (folderRef) => {
+        const folderPromises = folders.map(async (folderRef) => {
             const container = document.createElement('div');
             container.className = 'transperent-container';
             const label = document.createElement('label');
             label.className = 'date';
             label.textContent = folderRef.name;
             container.appendChild(label);
-            fileDisplay.appendChild(container);
+            fileDisplay.insertBefore(container, fileDisplay.firstChild);
             await displayFiles(folderRef, container);
         });
 
