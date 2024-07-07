@@ -43,11 +43,9 @@ function handleImageClick() {
     clearDisplay();
     const clonedElement = this.cloneNode(true);
     clonedElement.classList.add('disp-image');
-
     if (clonedElement.tagName.toLowerCase() === 'video') {
         clonedElement.controls = true;
     }
-
     displayDiv.appendChild(clonedElement);
     showDisplay();
     addCloseButton();
@@ -60,7 +58,6 @@ async function displayFiles(folderRef, containerElement) {
             const url = await getDownloadURL(fileRef);
             let fileElement;
             const fileName = fileRef.name.toLowerCase();
-
             if (fileName.match(/\.(jpg|jpeg|png|gif)$/)) {
                 fileElement = document.createElement('img');
                 fileElement.className = 'image';
@@ -86,7 +83,6 @@ async function displayFiles(folderRef, containerElement) {
                 hiddenInput.type = 'hidden';
                 hiddenInput.value = url;
                 fileElement.appendChild(hiddenInput);
-
                 fileElement.addEventListener('click', function () {
                     clearDisplay();
                     const wrapperDiv = document.createElement('div');
@@ -99,7 +95,6 @@ async function displayFiles(folderRef, containerElement) {
                     displayDiv.appendChild(wrapperDiv);
                     showDisplay();
                     addCloseButton();
-
                     clonedLabel.addEventListener('click', function () {
                         const url = clonedInput.value;
                         const fileName = clonedLabel.textContent;
@@ -115,7 +110,6 @@ async function displayFiles(folderRef, containerElement) {
             } else {
                 return null;
             }
-
             if (fileElement) {
                 containerElement.appendChild(fileElement);
                 if (fileElement.classList.contains('image') || fileElement.tagName.toLowerCase() === 'video') {
@@ -123,7 +117,6 @@ async function displayFiles(folderRef, containerElement) {
                 }
             }
         });
-
         await Promise.all(filePromises);
     } catch (error) {
         console.error('Error displaying files:', error);
@@ -134,7 +127,15 @@ async function displayItems() {
     try {
         const result = await listAll(storageRef);
         fileDisplay.innerHTML = '';
-        const folderPromises = result.prefixes.map(async (folderRef) => {
+
+        // Extract folder names and sort by date
+        const sortedFolders = result.prefixes.sort((a, b) => {
+            const dateA = new Date(a.name.split('-').reverse().join('-'));
+            const dateB = new Date(b.name.split('-').reverse().join('-'));
+            return dateB - dateA;
+        });
+
+        const folderPromises = sortedFolders.map(async (folderRef) => {
             const container = document.createElement('div');
             container.className = 'transperent-container';
             const label = document.createElement('label');
