@@ -130,46 +130,20 @@ async function displayFiles(folderRef, containerElement) {
     }
 }
 
-function isDateString(str) {
-    return /^\d{4}-\d{2}-\d{2}$/.test(str);
-}
-
 async function displayItems() {
     try {
         const result = await listAll(storageRef);
         fileDisplay.innerHTML = '';
-        const folders = result.prefixes;
-
-        // Separate folders into non-date and date folders
-        const nonDateFolders = folders.filter(folder => !isDateString(folder.name));
-        const dateFolders = folders.filter(folder => isDateString(folder.name));
-
-        // Sort date folders from newest to oldest
-        dateFolders.sort((a, b) => new Date(b.name) - new Date(a.name));
-
-        // Display non-date folders first, then date folders
-        const folderPromises = [
-            ...nonDateFolders.map(async (folderRef) => {
-                const container = document.createElement('div');
-                container.className = 'transperent-container';
-                const label = document.createElement('label');
-                label.className = 'date';
-                label.textContent = folderRef.name;
-                container.appendChild(label);
-                fileDisplay.appendChild(container);
-                await displayFiles(folderRef, container);
-            }),
-            ...dateFolders.map(async (folderRef) => {
-                const container = document.createElement('div');
-                container.className = 'transperent-container';
-                const label = document.createElement('label');
-                label.className = 'date';
-                label.textContent = folderRef.name;
-                container.appendChild(label);
-                fileDisplay.appendChild(container);
-                await displayFiles(folderRef, container);
-            })
-        ];
+        const folderPromises = result.prefixes.map(async (folderRef) => {
+            const container = document.createElement('div');
+            container.className = 'transperent-container';
+            const label = document.createElement('label');
+            label.className = 'date';
+            label.textContent = folderRef.name;
+            container.appendChild(label);
+            fileDisplay.appendChild(container);
+            await displayFiles(folderRef, container);
+        });
 
         await Promise.all(folderPromises);
     } catch (error) {
