@@ -5,15 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Upload</title>
     <link rel="stylesheet" href="assets/css/Upload.css">
-    <link rel="icon" href="assets/images/favicon.png" type="image/png">
 </head>
 <body>
     <div class="upload-container">
+        <!-- File input -->
         <input type="file" id="fileInput" multiple onchange="displayFiles(this)" class="custom-file-input">
+        
+        <!-- Upload button -->
         <button class="plane-button" id="Plane" onclick="uploadFiles()">
             <img src="assets/images/plane.png" alt="Plane Icon">
         </button>
+        
+        <!-- File preview container -->
         <div class="preview-container"></div>
+        
+        <!-- Select user dropdown -->
         <div class="select-container">
             <select id="mySelect">
                 <option value="User-1">User-1</option>
@@ -21,10 +27,21 @@
             </select>
         </div>
     </div>
-    <!-- Include Firebase scripts from the CDN using non-module syntax -->
+
+    <!-- JavaScript -->
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
-    <script src="assets/script/upload.js"></script> <!-- Link to the external JavaScript file -->
-</body>
+    <script src="assets/script/upload.js"></script>
 
+    <script>
+        // Check if session is active every 100 milliseconds
+        setInterval(function() {
+            var loggedInUser = localStorage.getItem('loggedInUser');
+            if (!loggedInUser) {
+                // Redirect to index.html if session is not active
+                window.location.href = "index.html";
+            }
+        }, 100); // Check every 100 milliseconds
+    </script>
+</body>
 </html>
