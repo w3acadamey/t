@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/chat.css">
+</head>
+<body>
+    <div class="profile-container">
+        <button class="user-button" onclick="toggleLogMenu()">
+            <img src="assets/images/User-icon.png" alt="User Icon" class="user-icon">
+        </button>
+        <div class="log-menu" id="logMenu" style="display: none;">
+            <label id="userIDLabel"></label>
+            <button onclick="unsetSession()">Logout</button>
+        </div>
+    </div>
+    <div class="container" id="output">
+        <!-- Chat Loading Container --> 
+    </div>
+    <div class="bottom-container">
+        <div class="input-container">
+            <button class="smiley-icon" id="smileyBtn"><i class="far fa-smile"></i></button>
+            <input type="text" class="input-field" id="messageInput" placeholder="Type a Message">
+            <img src="assets/images/pin.png" alt="Pin" class="pin-icon" id="pinBtn" onclick="toggleFileContainer()">
+            <img src="assets/images/send.png" alt="Send" class="send-icon" id="sendBtn">
+        </div>
+        <div class="file-container" id="fileContainer" style="display: none;">
+            <a href="file-upload.html" target="_blank" style="margin-top: 20px;">
+                <img class="upload-img" src="assets/images/Upload.png" alt="Upload Button">
+            </a>
+            <a href="file-view.html" target="_blank" style="margin-top: 20px;">
+                <img class="view-img" src="assets/images/view.png" alt="View Button">
+            </a>
+        </div>
+                        
+        <div class="smiley-container" id="smileyContainer" style="display: none;"></div>        
+    </div>
+
+    <script src="assets/script/chat-view.js"></script>
+    <script>
+        // Check if session is active
+        var loggedInUser = localStorage.getItem('loggedInUser');
+        if (!loggedInUser) {
+            // Redirect to index.html if session is not active
+            window.location.href = "index.html";
+        }
+
+        // Function to unset session
+        function unsetSession() {
+            // Display confirmation dialog
+            var confirmLogout = confirm("Are you sure you want to log out?");
+            if (confirmLogout) {
+                localStorage.removeItem('loggedInUser');
+                window.location.href = "index.html"; // Redirect to index.html after unsetting session
+            }
+        }
+
+        // Function to toggle the log menu
+        function toggleLogMenu() {
+            var logMenu = document.getElementById('logMenu');
+            if (logMenu.style.display === 'none' || logMenu.style.display === '') {
+                logMenu.style.display = 'block';
+            } else {
+                logMenu.style.display = 'none';
+            }
+        }
+
+        // Close the log menu when clicking outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('.user-button') && !event.target.matches('.user-icon')) {
+                var logMenu = document.getElementById('logMenu');
+                if (logMenu.style.display === 'block') {
+                    logMenu.style.display = 'none';
+                }
+            }
+        }
+    </script>
+    <script src="assets/script/send.js"></script>
+    <script src="assets/script/emoji.js"></script>
+    <script src="assets/script/file.js"></script>
+    <!-- Add Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js"></script>
+</body>
+</html>
