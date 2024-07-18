@@ -131,7 +131,12 @@ async function displayFiles(folderRef, containerElement) {
 }
 
 function isDateString(str) {
-    return /^\d{4}-\d{2}-\d{2}$/.test(str);
+    return /^\d{2}-\d{2}-\d{4}$/.test(str);
+}
+
+function parseDateString(str) {
+    const [day, month, year] = str.split('-').map(Number);
+    return new Date(year, month - 1, day);
 }
 
 async function displayItems() {
@@ -148,13 +153,14 @@ async function displayItems() {
         nonDateFolders.sort((a, b) => a.name.localeCompare(b.name));
 
         // Sort date folders from newest to oldest
-        dateFolders.sort((a, b) => new Date(b.name) - new Date(a.name));
+        dateFolders.sort((a, b) => parseDateString(b.name) - parseDateString(a.name));
 
         // Display non-date folders first, then date folders
         const folderPromises = [
             ...nonDateFolders.map(async (folderRef) => {
                 const container = document.createElement('div');
                 container.className = 'transparent-container';
+                container.style.width = '100%'; // Set width dynamically
                 const label = document.createElement('label');
                 label.className = 'date';
                 label.textContent = folderRef.name;
@@ -165,6 +171,7 @@ async function displayItems() {
             ...dateFolders.map(async (folderRef) => {
                 const container = document.createElement('div');
                 container.className = 'transparent-container';
+                container.style.width = '100%'; // Set width dynamically
                 const label = document.createElement('label');
                 label.className = 'date';
                 label.textContent = folderRef.name;
