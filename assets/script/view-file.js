@@ -4,7 +4,7 @@ import { getStorage, ref, listAll, getDownloadURL } from "https://www.gstatic.co
 
 // Firebase configuration
 const firebaseConfig = {
-    storageBucket: "private-chat-21.appspot.com"
+    storageBucket: "private-chat-21-e2528.appspot.com"
 };
 
 // Initialize Firebase
