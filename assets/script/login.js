@@ -9,8 +9,8 @@ async function handleSubmit(event) {
     let attempts = localStorage.getItem('loginAttempts') ? parseInt(localStorage.getItem('loginAttempts')) : 0;
 
     // Your Firebase URLs
-    const loginFirebaseUrl = "https://private-chat-21-default-rtdb.firebaseio.com/Login.json";
-    const devicesFirebaseBaseUrl = "https://private-chat-21-default-rtdb.firebaseio.com/Logged-In-Devices";
+    const loginFirebaseUrl = "https://private-chat-21-e2528-default-rtdb.firebaseio.com/Login.json";
+    const devicesFirebaseBaseUrl = "https://private-chat-21-e2528-default-rtdb.firebaseio.com/Logged-In-Devices";
 
     try {
         // Fetch data from Firebase
