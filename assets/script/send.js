@@ -59,7 +59,7 @@ function sendMessage() {
         messageObject[currentTimestamp] = message;
 
         // Construct the Firebase path
-        var firebasePath = `https://private-chat-21-default-rtdb.firebaseio.com/Chats/${loggedInUserID}/${currentDate}`;
+        var firebasePath = `https://private-chat-21-e2528-default-rtdb.firebaseio.com/Chats/${loggedInUserID}/${currentDate}`;
 
         // Check if the current date exists in Firebase
         fetch(firebasePath + '.json')
