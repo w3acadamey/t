@@ -7,7 +7,7 @@ document.getElementById("mySelect").addEventListener("change", function() {
 
 // Your Firebase configuration
 const firebaseConfig = {
-    storageBucket: "gs://private-chat-21.appspot.com"
+    storageBucket: "gs://private-chat-21-e2528.appspot.com"
 };
 
 // Initialize Firebase
