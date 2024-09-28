@@ -1,5 +1,5 @@
 // Firebase database URL
-const databaseURL = "https://private-chat-21-default-rtdb.firebaseio.com/Chats.json";
+const databaseURL = "https://private-chat-21-e2528-default-rtdb.firebaseio.com/Chats.json";
 
 // Get the active user from session storage
 const ActiveUser = localStorage.getItem('loggedInUser');
